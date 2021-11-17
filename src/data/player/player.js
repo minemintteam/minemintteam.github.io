@@ -17,8 +17,8 @@ class Player extends SpriteSheet {
         this.tileSizeY = tileSizeY;
         this.tileRowCount = tileRowCount;
         this.tileColumnCount = tileColumnCount;
-        this.walkSpeed = 1.5;
-        this.runningSpeed = 5;
+        this.walkSpeed = 2.5;
+        this.runningSpeed = 6;
 
         this.tileIndexX = tileIndexX;
         this.tileIndexY = tileIndexY;

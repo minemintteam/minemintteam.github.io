@@ -36,8 +36,8 @@ let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height 
 // Graphics,X,Y,Text Color
 let txMouseCoordinates = new Text([gfx,canvas.width / 2, canvas.height - 20, mColors.blue_900()]);
 ```
-### Character Sprite Set (32x32 width and height of tile) and each sheet is 3 colums by 4 rows. 6 sheets per Sprite Set
-
+## Media Examples
+### Character Sprite Set (32x32 width and height of tile) and each sheet is 3 colums by 4 rows. 6 sheets per Sprite Set (RPG Maker MV Style)
 [0,0] [0,1] [0,2] [0,3] [0,4] [0,5] [0,6] [0,7] [0,8] D  
 [1,0] [1,1] [1,2] [1,3] [1,4] [1,5] [1,6] [1,7] [1,8] L  
 [2,0] [2,1] [2,2] [2,3] [2,4] [2,5] [2,6] [2,7] [2,8] R  
@@ -46,9 +46,7 @@ let txMouseCoordinates = new Text([gfx,canvas.width / 2, canvas.height - 20, mCo
 [5,0] [5,1] [5,2] [5,3] [5,4] [5,5] [5,6] [5,7] [5,8] L  
 [6,0] [6,1] [6,2] [6,3] [6,4] [6,5] [6,6] [6,7] [6,8] R  
 [7,0] [7,1] [7,2] [7,3] [7,4] [7,5] [7,6] [7,7] [7,8] U  
-
 ## Up Next
-
 ```
 - Tile Sets (32x32 width and height of tile) and each sheet is. 1 sheet per Tile Set
 - Maps are made with Tiled and exported as JSON

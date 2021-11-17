@@ -17,11 +17,85 @@ class Player extends SpriteSheet {
         this.tileSizeY = tileSizeY;
         this.tileRowCount = tileRowCount;
         this.tileColumnCount = tileColumnCount;
+
         this.walkSpeed = 2.5;
         this.runningSpeed = 6;
 
         this.tileIndexX = tileIndexX;
         this.tileIndexY = tileIndexY;
+
+        this.originX = tileIndexX;
+        this.originY = tileIndexY;
+
+        this.moving = false;
+
+        setInterval(() => { this.animate(); }, 300);
+    }
+
+    async animate() {
+        if(this.moving == true && this.tileIndexY == 1) {
+            switch(this.tileIndexX) {
+                case this.originX:
+                    this.tileIndexX = this.originX + 1;
+                    break;
+                case this.originX - 1:
+                    this.tileIndexX = this.originX + 1;
+                    break;
+                case this.originX + 1:
+                    this.tileIndexX = this.originX - 1;
+                    break;
+            }
+        } else if(this.moving == false && this.tileIndexY == 1) {
+            this.tileIndexX = this.originX;
+        }
+
+        if(this.moving == true && this.tileIndexY == 2) {
+            switch(this.tileIndexX) {
+                case this.originX:
+                    this.tileIndexX = this.originX + 1;
+                    break;
+                case this.originX - 1:
+                    this.tileIndexX = this.originX + 1;
+                    break;
+                case this.originX + 1:
+                    this.tileIndexX = this.originX - 1;
+                    break;
+            }
+        } else if(this.moving == false && this.tileIndexY == 2) {
+            this.tileIndexX = this.originX;
+        }
+
+        if(this.moving == true && this.tileIndexY == 3) {
+            switch(this.tileIndexX) {
+                case this.originX:
+                    this.tileIndexX = this.originX + 1;
+                    break;
+                case this.originX - 1:
+                    this.tileIndexX = this.originX + 1;
+                    break;
+                case this.originX + 1:
+                    this.tileIndexX = this.originX - 1;
+                    break;
+            }
+        } else if(this.moving == false && this.tileIndexY == 3) {
+            this.tileIndexX = this.originX;
+        }
+
+        if(this.moving == true && this.tileIndexY == 0) {
+            switch(this.tileIndexX) {
+                case this.originX:
+                    this.tileIndexX = this.originX + 1;
+                    break;
+                case this.originX - 1:
+                    this.tileIndexX = this.originX + 1;
+                    break;
+                case this.originX + 1:
+                    this.tileIndexX = this.originX - 1;
+                    break;
+            }
+        } else if(this.moving == false && this.tileIndexY == 0) {
+            this.tileIndexX = this.originX;
+        }
     }
 
     draw() {
@@ -31,6 +105,7 @@ class Player extends SpriteSheet {
             } else {
                 this.locX -= this.walkSpeed;
             }
+            this.tileIndexY = 1;
         }
         if(this.input.getRightPressed() == true) {
             if(this.input.getSpacePressed() == true) {
@@ -38,6 +113,7 @@ class Player extends SpriteSheet {
             } else {
                 this.locX += this.walkSpeed;
             }
+            this.tileIndexY = 2;
         }
         if(this.input.getUpPressed() == true) {
             if(this.input.getSpacePressed() == true) {
@@ -45,6 +121,7 @@ class Player extends SpriteSheet {
             } else {
                 this.locY -= this.walkSpeed;
             }
+            this.tileIndexY = 3;
         }
         if(this.input.getDownPressed() == true) {
             if(this.input.getSpacePressed() == true) {
@@ -52,9 +129,15 @@ class Player extends SpriteSheet {
             } else {
                 this.locY += this.walkSpeed;
             }
+            this.tileIndexY = 0;
         }
-
-        this.ctx.drawImage(this.image, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).x, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).y, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).width, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).height, this.locX, this.locY, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).width, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).height);
+        if(this.input.getLeftPressed() == true || this.input.getRightPressed() == true || this.input.getUpPressed() == true || this.input.getDownPressed() == true) {
+            this.moving = true;
+        } else {
+            this.moving = false;
+        }
+        
+        this.ctx.drawImage(this.image, this.tileIndexX*this.tileSizeX, this.tileIndexY*this.tileSizeY, this.tileSizeX, this.tileSizeY, this.locX, this.locY, this.tileSizeX, this.tileSizeY);
     }
 
     getLocation() {

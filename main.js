@@ -1,5 +1,5 @@
 //2021-2022 samuel r rivera-bonilla
-import Game from './game.js';
+import Game from './src/game.js';
 
 var game = new Game();
 

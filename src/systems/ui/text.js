@@ -4,7 +4,7 @@ class Text {
         this.ctx = config[0].getContext();
         this.x = config[1];
         this.y = config[2];
-        this.color = config[4];
+        this.color = config[3];
     }
 
     draw(text) {

@@ -1,5 +1,5 @@
 //2021-2022 samuel r rivera-bonilla
-import CharaterSprite from "../systems/ui/charactersprite.js";
+import CharaterSprite from "../../systems/gfx/charactersprite.js";
 
 class Player extends CharaterSprite {
     constructor(config, config_sprite) {

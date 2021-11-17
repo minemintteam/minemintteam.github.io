@@ -1,6 +1,14 @@
 # Simple Game/Engine created using Vanilla JS. (WIP)
 
-## Character Sprite Set (32x32 width and height of tile) and each sheet is 3 colums by 4 rows. 6 sheets per Sprite Set
+### Current Features:
+```
+- Input, Game Loop, and Rendering Implemented.
+- Basic UI elements (buttons, text, etc.).
+- Sprite Sheet, and Animation Implemented.
+- Player, Enemy NPC, and Friendly NPC Implemented.
+- Basic Items Implemented.
+```
+### Character Sprite Set (32x32 width and height of tile) and each sheet is 3 colums by 4 rows. 6 sheets per Sprite Set
 
 [0,0] [0,1] [0,2] [0,3] [0,4] [0,5] [0,6] [0,7] [0,8] D  
 [1,0] [1,1] [1,2] [1,3] [1,4] [1,5] [1,6] [1,7] [1,8] L  
@@ -14,6 +22,6 @@
 ## Up Next:
 
 ```
-Tile Sets (32x32 width and height of tile) and each sheet is. 1 sheet per Tile Set
-Maps are made with Tiled and exported as JSON
+- Tile Sets (32x32 width and height of tile) and each sheet is. 1 sheet per Tile Set
+- Maps are made with Tiled and exported as JSON
 ```

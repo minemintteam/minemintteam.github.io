@@ -1,12 +1,26 @@
 # Simple Game/Engine created using Vanilla JS. (WIP)
 
-### Current Features:
+## Current Features:
 ```
 - Input, Game Loop, and Rendering Implemented.
 - Basic UI elements (buttons, text, etc.).
 - Sprite Sheet, and Animation Implemented.
 - Player, Enemy NPC, and Friendly NPC Implemented.
 - Basic Items Implemented.
+```
+
+## UI Examples:
+### Background:
+```js
+let background = new Background([gfx,mColors.gray_200(), 1.0]);
+```
+### Button:
+```js
+let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2 - 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click") }]);
+```
+### Text:
+```js
+let txMouseCoordinates = new Text([gfx,canvas.width / 2, canvas.height - 20, mColors.blue_900()]);
 ```
 ### Character Sprite Set (32x32 width and height of tile) and each sheet is 3 colums by 4 rows. 6 sheets per Sprite Set
 

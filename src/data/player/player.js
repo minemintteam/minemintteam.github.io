@@ -35,14 +35,14 @@ class Player extends SpriteSheet {
     async animate() {
         if(this.moving == true && this.tileIndexY == 1) {
             switch(this.tileIndexX) {
-                case this.originX:
-                    this.tileIndexX = this.originX + 1;
-                    break;
                 case this.originX - 1:
                     this.tileIndexX = this.originX + 1;
                     break;
                 case this.originX + 1:
                     this.tileIndexX = this.originX - 1;
+                    break;
+                default:
+                    this.tileIndexX = this.originX + 1;
                     break;
             }
         } else if(this.moving == false && this.tileIndexY == 1) {
@@ -51,14 +51,14 @@ class Player extends SpriteSheet {
 
         if(this.moving == true && this.tileIndexY == 2) {
             switch(this.tileIndexX) {
-                case this.originX:
-                    this.tileIndexX = this.originX + 1;
-                    break;
                 case this.originX - 1:
                     this.tileIndexX = this.originX + 1;
                     break;
                 case this.originX + 1:
                     this.tileIndexX = this.originX - 1;
+                    break;
+                default:
+                    this.tileIndexX = this.originX + 1;
                     break;
             }
         } else if(this.moving == false && this.tileIndexY == 2) {
@@ -67,14 +67,14 @@ class Player extends SpriteSheet {
 
         if(this.moving == true && this.tileIndexY == 3) {
             switch(this.tileIndexX) {
-                case this.originX:
-                    this.tileIndexX = this.originX + 1;
-                    break;
                 case this.originX - 1:
                     this.tileIndexX = this.originX + 1;
                     break;
                 case this.originX + 1:
                     this.tileIndexX = this.originX - 1;
+                    break;
+                default:
+                    this.tileIndexX = this.originX + 1;
                     break;
             }
         } else if(this.moving == false && this.tileIndexY == 3) {
@@ -83,14 +83,14 @@ class Player extends SpriteSheet {
 
         if(this.moving == true && this.tileIndexY == 0) {
             switch(this.tileIndexX) {
-                case this.originX:
-                    this.tileIndexX = this.originX + 1;
-                    break;
                 case this.originX - 1:
                     this.tileIndexX = this.originX + 1;
                     break;
                 case this.originX + 1:
                     this.tileIndexX = this.originX - 1;
+                    break;
+                default:
+                    this.tileIndexX = this.originX + 1;
                     break;
             }
         } else if(this.moving == false && this.tileIndexY == 0) {

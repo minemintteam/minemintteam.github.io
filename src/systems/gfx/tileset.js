@@ -1,11 +1,10 @@
 class TileSet {
-    constructor(config) {
-        this.name = config[0];
-        this.image = config[1];
-        this.tileSizeX = config[2];
-        this.tileSizeY = config[3];
-        this.tileRowCount = config[4];
-        this.tileColumnCount = config[5];
+    constructor(name, image, tileSizeX, tileSizeY, tileColumnCount) {
+        this.name = name;
+        this.image = image;
+        this.tileSizeX = tileSizeX;
+        this.tileSizeY = tileSizeY;
+        this.tileColumnCount = tileColumnCount;
     }
 
     getTile(tileIndex) {

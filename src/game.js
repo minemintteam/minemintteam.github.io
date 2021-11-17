@@ -6,6 +6,9 @@ import Controls from './systems/io/controls.js';
 //testing graphics
 import Graphics from './systems/io/graphics.js';
 
+//testing map
+import TileMap from './systems/gfx/tilemap.js';
+
 //testing ui
 import Button from './systems/ui/button.js';
 import Text from './systems/ui/text.js';
@@ -29,7 +32,9 @@ let background = new Background([gfx,mColors.gray_200(), 1.0]);
 let xX = 30;
 let yY = 30;
 
-let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 0, 1, gfx, input);
+let Map = new TileMap("map", "../src/data/images/actors.png", 32, 32, 5, 5, gfx);
+
+let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 1, 0, gfx, input);
 
 let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2 - 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click") }]);
 let btLoadGame = new Button([gfx,input,"Load Game",canvas.width / 2,canvas.height / 2,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("load game click") }]);
@@ -43,6 +48,7 @@ class Game {
     }
 
     drawGameLayer() {
+        Map.draw();
         PlayerOne.draw();
     }
 

@@ -1,8 +1,8 @@
 //2021-2022 samuel r rivera-bonilla
 class Graphics {
-    constructor(gfx, x, y) {
-        this.canvas = gfx.getCanvas();
-        this.ctx = gfx.getContext();
+    constructor(canvas, x, y) {
+        this.canvas = canvas;
+        this.ctx = this.canvas.getContext("2d");
         this.x = x;
         this.y = y;
     }

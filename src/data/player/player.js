@@ -2,7 +2,7 @@
 import SpriteSheet from "../../systems/gfx/spritesheet.js";
 
 class Player extends SpriteSheet {
-    constructor(name, health, mana, power, image, locX, locY, tileSizeX, tileSizeY, tileRowCount, tileColumnCount, tileIndexX, tileIndexY, ctx, input) {
+    constructor(name, health, mana, power, image, locX, locY, tileSizeX, tileSizeY, tileRowCount, tileColumnCount, tileIndexX, tileIndexY, gfx, input) {
         super(name, image, tileSizeX, tileSizeY, tileRowCount, tileColumnCount);
         this.image = new Image();
         this.image.src = image;
@@ -11,7 +11,7 @@ class Player extends SpriteSheet {
         this.power = power;
         this.locX = locX;
         this.locY = locY;
-        this.ctx = ctx;
+        this.ctx = gfx.getContext();
         this.input = input;
         this.tileSizeX = tileSizeX;
         this.tileSizeY = tileSizeY;

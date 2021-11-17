@@ -19,7 +19,7 @@ let canvas = document.getElementById("game_canvas");
 canvas.width = document.body.clientWidth - 0;
 canvas.height = document.body.clientHeight - 0;
 
-let gfx = new Graphics([canvas, canvas.width, canvas.height]);
+let gfx = new Graphics(canvas, canvas.width, canvas.height);
 let input = new Controls();
 
 let mColors = new MaterialColors();

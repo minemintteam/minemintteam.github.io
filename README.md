@@ -1,4 +1,4 @@
-# Simple Game/Engine created using Vanilla JS. (WIP)
+# Game/Engine created using Vanilla JS. (WIP)
 
 ## Current Features
 ```

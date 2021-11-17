@@ -8,18 +8,32 @@
 - Player, Enemy NPC, and Friendly NPC Implemented.
 - Basic Items Implemented.
 ```
-
-## UI Examples:
+## Input and Graphics Example
+### Input Example:
+```js
+let input = new Controls();
+```
+### Graphics Example:
+```js
+let canvas = document.getElementById("game_canvas");
+canvas.width = document.body.clientWidth - 0;
+canvas.height = document.body.clientHeight - 0;
+let gfx = new Graphics([canvas, canvas.width, canvas.height]);
+```
+## UI Examples
 ### Background:
 ```js
+// Graphics,Color,Opacity
 let background = new Background([gfx,mColors.gray_200(), 1.0]);
 ```
 ### Button:
 ```js
+// Graphics,Text,X,Y,Light Background Color,Border Color,Text Color,Dark Background Color, Callback
 let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2 - 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click") }]);
 ```
 ### Text:
 ```js
+// Graphics,X,Y,Text Color
 let txMouseCoordinates = new Text([gfx,canvas.width / 2, canvas.height - 20, mColors.blue_900()]);
 ```
 ### Character Sprite Set (32x32 width and height of tile) and each sheet is 3 colums by 4 rows. 6 sheets per Sprite Set

@@ -1,11 +1,11 @@
-class TileSet {
-    constructor(config) {
-        this.name = config[0];
-        this.image = config[1];
-        this.tileSizeX = config[2];
-        this.tileSizeY = config[3];
-        this.tileRowCount = config[4];
-        this.tileColumnCount = config[5];
+class SpriteSheet {
+    constructor(name,image,tileSizeX, tileSizeY, tileRowCount, tileColumnCount) {
+        this.name = name;
+        this.image = image;
+        this.tileSizeX = tileSizeX;
+        this.tileSizeY = tileSizeY;
+        this.tileRowCount = tileRowCount;
+        this.tileColumnCount = tileColumnCount;
     }
 
     getTile(tileIndex) {
@@ -29,5 +29,4 @@ class TileSet {
         return this.name;
     }
 }
-
-export default TileSet;
+export default SpriteSheet;

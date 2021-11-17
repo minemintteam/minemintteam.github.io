@@ -29,8 +29,7 @@ let background = new Background([gfx,mColors.gray_200(), 1.0]);
 let xX = 30;
 let yY = 30;
 
-let PlayerOne = new Player(["Player One",xX,yY,100,100],[gfx,"../src/data/images/actors.png",0,0]);
-var PlayerDirection = 0;
+let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 0, 1, gfx.getContext(), input);
 
 let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2 - 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click") }]);
 let btLoadGame = new Button([gfx,input,"Load Game",canvas.width / 2,canvas.height / 2,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("load game click") }]);
@@ -41,38 +40,7 @@ let txMouseCoordinates = new Text([gfx,canvas.width / 2, canvas.height - 20, mCo
 class Game {
 
     updateLogic() {
-        if(input.getDownPressed() == true) {
-            if(input.getSpacePressed() == true) {
-                yY = yY + 6;
-            } else {
-                yY = yY + 2.5;
-            }
-            PlayerOne.move(xX,yY,0);
-        }
-        if(input.getUpPressed() == true) {
-            if(input.getSpacePressed() == true) {
-                yY = yY - 6;
-            } else {
-                yY = yY - 2.5;
-            }
-            PlayerOne.move(xX,yY,3);
-        }
-        if(input.getRightPressed() == true) {
-            if(input.getSpacePressed() == true) {
-                xX = xX + 6;
-            } else {
-                xX = xX + 2.5;
-            }
-            PlayerOne.move(xX,yY,2);
-        }
-        if(input.getLeftPressed() == true) {
-            if(input.getSpacePressed() == true) {
-                xX = xX - 6;
-            } else {
-                xX = xX - 2.5;
-            }
-            PlayerOne.move(xX,yY,1);
-        }
+        
     }
 
     drawBackgroundLayer() {

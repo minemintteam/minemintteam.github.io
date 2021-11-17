@@ -3,13 +3,10 @@ import Game from './src/game.js';
 
 var game = new Game();
 
-let d = new Date();
-let timestamp;
-
 class Main {
     run() {
         timestamp = Date.now() / 1000;
-        game.update(timestamp);
+        game.update();
         window.requestAnimationFrame(main.run);
     }
 }

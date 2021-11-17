@@ -38,11 +38,6 @@ let btQuitGame = new Button([gfx,input,"Quit Game",canvas.width / 2,canvas.heigh
 let txMouseCoordinates = new Text([gfx,canvas.width / 2, canvas.height - 20, mColors.blue_900()]);
 
 class Game {
-
-    updateLogic() {
-        
-    }
-
     drawBackgroundLayer() {
         background.drawColor();
     }
@@ -59,8 +54,7 @@ class Game {
         txMouseCoordinates.draw("Mouse Pressed: " + input.getMouseClicked() + ", Last X Clicked: " + input.getMouseX() + ", Last Y Clicked: " + input.getMouseY());
     }  
 
-    update(timestamp) {
-        this.updateLogic();
+    update() {
         gfx.clear();
         this.drawBackgroundLayer();
         this.drawGameLayer();

@@ -19,8 +19,8 @@ import MaterialColors from './systems/ui/colors/material.js';
 import Player from './data/player/player.js';
 
 let canvas = document.getElementById("game_canvas");
-canvas.width = document.body.clientWidth - 609;
-canvas.height = document.body.clientHeight - 308;
+canvas.width = document.body.clientWidth - 100;
+canvas.height = document.body.clientHeight - 100;
 
 let gfx = new Graphics(canvas, canvas.width, canvas.height);
 let input = new Controls();
@@ -33,7 +33,7 @@ let xX = 30;
 let yY = 30;
 
 let Map = new TileMap("map", "../src/data/images/actors.png", 32, 32, 25, 40, false, gfx);
-let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 1, 0, gfx, input);
+let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 7, 4, gfx, input);
 
 let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2 - 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click") }]);
 let btLoadGame = new Button([gfx,input,"Load Game",canvas.width / 2,canvas.height / 2,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("load game click") }]);

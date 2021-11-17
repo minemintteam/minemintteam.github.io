@@ -33,7 +33,7 @@ class Player extends SpriteSheet {
     }
 
     async animate() {
-        if(this.moving == true && this.tileIndexY == 1) {
+        if(this.moving == true && this.tileIndexY == this.originY + 1) {
             switch(this.tileIndexX) {
                 case this.originX - 1:
                     this.tileIndexX = this.originX + 1;
@@ -45,11 +45,11 @@ class Player extends SpriteSheet {
                     this.tileIndexX = this.originX + 1;
                     break;
             }
-        } else if(this.moving == false && this.tileIndexY == 1) {
+        } else if(this.moving == false && this.tileIndexY == this.originY + 1) {
             this.tileIndexX = this.originX;
         }
 
-        if(this.moving == true && this.tileIndexY == 2) {
+        if(this.moving == true && this.tileIndexY == this.originY + 2) {
             switch(this.tileIndexX) {
                 case this.originX - 1:
                     this.tileIndexX = this.originX + 1;
@@ -61,11 +61,11 @@ class Player extends SpriteSheet {
                     this.tileIndexX = this.originX + 1;
                     break;
             }
-        } else if(this.moving == false && this.tileIndexY == 2) {
+        } else if(this.moving == false && this.tileIndexY == this.originY + 2) {
             this.tileIndexX = this.originX;
         }
 
-        if(this.moving == true && this.tileIndexY == 3) {
+        if(this.moving == true && this.tileIndexY == this.originY + 3) {
             switch(this.tileIndexX) {
                 case this.originX - 1:
                     this.tileIndexX = this.originX + 1;
@@ -77,11 +77,11 @@ class Player extends SpriteSheet {
                     this.tileIndexX = this.originX + 1;
                     break;
             }
-        } else if(this.moving == false && this.tileIndexY == 3) {
+        } else if(this.moving == false && this.tileIndexY == this.originY + 3) {
             this.tileIndexX = this.originX;
         }
 
-        if(this.moving == true && this.tileIndexY == 0) {
+        if(this.moving == true && this.tileIndexY == this.originY) {
             switch(this.tileIndexX) {
                 case this.originX - 1:
                     this.tileIndexX = this.originX + 1;
@@ -93,19 +93,20 @@ class Player extends SpriteSheet {
                     this.tileIndexX = this.originX + 1;
                     break;
             }
-        } else if(this.moving == false && this.tileIndexY == 0) {
+        } else if(this.moving == false && this.tileIndexY == this.originY) {
             this.tileIndexX = this.originX;
         }
     }
 
     draw() {
+        console.log(this.tileIndexX + ", " + this.tileIndexY);
         if(this.input.getLeftPressed() == true) {
             if(this.input.getSpacePressed() == true) {
                 this.locX -= this.runningSpeed;
             } else {
                 this.locX -= this.walkSpeed;
             }
-            this.tileIndexY = 1;
+            this.tileIndexY = this.originY + 1;
         }
         if(this.input.getRightPressed() == true) {
             if(this.input.getSpacePressed() == true) {
@@ -113,7 +114,7 @@ class Player extends SpriteSheet {
             } else {
                 this.locX += this.walkSpeed;
             }
-            this.tileIndexY = 2;
+            this.tileIndexY = this.originY + 2;
         }
         if(this.input.getUpPressed() == true) {
             if(this.input.getSpacePressed() == true) {
@@ -121,7 +122,7 @@ class Player extends SpriteSheet {
             } else {
                 this.locY -= this.walkSpeed;
             }
-            this.tileIndexY = 3;
+            this.tileIndexY = this.originY + 3;
         }
         if(this.input.getDownPressed() == true) {
             if(this.input.getSpacePressed() == true) {
@@ -129,7 +130,7 @@ class Player extends SpriteSheet {
             } else {
                 this.locY += this.walkSpeed;
             }
-            this.tileIndexY = 0;
+            this.tileIndexY = this.originY;
         }
         if(this.input.getLeftPressed() == true || this.input.getRightPressed() == true || this.input.getUpPressed() == true || this.input.getDownPressed() == true) {
             this.moving = true;
@@ -137,6 +138,7 @@ class Player extends SpriteSheet {
             this.moving = false;
         }
         
+        //this.ctx.drawImage(this.image, this.tileIndexX*this.tileSizeX, this.tileIndexY*this.tileSizeY, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).width, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).height, this.locX, this.locY, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).width, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).height);
         this.ctx.drawImage(this.image, this.tileIndexX*this.tileSizeX, this.tileIndexY*this.tileSizeY, this.tileSizeX, this.tileSizeY, this.locX, this.locY, this.tileSizeX, this.tileSizeY);
     }
 

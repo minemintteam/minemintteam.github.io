@@ -5,7 +5,6 @@ var game = new Game();
 
 class Main {
     run() {
-        timestamp = Date.now() / 1000;
         game.update();
         window.requestAnimationFrame(main.run);
     }

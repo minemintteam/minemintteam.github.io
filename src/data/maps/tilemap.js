@@ -1,7 +1,7 @@
 import TileSet from '../../systems/gfx/tileset.js';
 
 class TileMap extends TileSet{
-    constructor(name, image, tileSizeX, tileSizeY, tileRowCount, tileColumnCount, grid_conf, map, gfx) {
+    constructor(name, image, tileSizeX, tileSizeY, tileRowCount, tileColumnCount, locX, locY, grid_conf, map, gfx) {
         super(name, image, tileSizeX, tileSizeY, tileRowCount, tileColumnCount);
 
         this.name = name;
@@ -11,6 +11,8 @@ class TileMap extends TileSet{
         this.tileSizeY = tileSizeY;
         this.tileRowCount = tileRowCount;
         this.tileColumnCount = tileColumnCount;
+        this.locX = locX;
+        this.locY = locY;
         this.grid_conf = grid_conf;
         this.bottom = map[0];
         this.mid = map[1];
@@ -30,8 +32,8 @@ class TileMap extends TileSet{
     }
 
     bottom_layer() {
-        var xX = 0;
-        var xY = 0;
+        var xX = this.locX;
+        var xY = this.locY;
 
         var i; 
         var ii; 
@@ -50,8 +52,8 @@ class TileMap extends TileSet{
     }
 
     mid_layer() {
-        var xX = 0;
-        var xY = 0;
+        var xX = this.locX;
+        var xY = this.locY;
 
         var i; 
         var ii; 
@@ -72,8 +74,8 @@ class TileMap extends TileSet{
     }
 
     grid() {
-        var xX = 0;
-        var xY = 0;
+        var xX = this.locX;
+        var xY = this.locY;
 
         var i; 
         var ii; 

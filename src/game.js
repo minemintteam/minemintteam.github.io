@@ -41,7 +41,7 @@ let mid_layer = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 var map = [bottom_layer, mid_layer];
 
 let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 4, 0, gfx, input);
-let Map = new TileMap("map", "../src/data/images/tileset.png", 32, 32, [24,32], [24,32], (canvas.width / 4) / 2, 0, tempBool2, map,gfx);
+let Map = new TileMap("map", "../src/data/images/tileset.png", 32, 32, [24,32], [24,32], 0, 0, tempBool2, map,gfx);
 
 let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click"); tempBool = true; }]);
 let btQuitGame = new Button([gfx,input,"Quit Game",canvas.width - 100, canvas.height / 2 - 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("quit game click"); tempBool = false; }]);

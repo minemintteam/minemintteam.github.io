@@ -25,11 +25,11 @@ class TileMap extends TileSet{
         this.bottom_layer();
         this.mid_layer();
 
-        /*
+        
         if(this.grid_conf == true) {
             this.grid();
         }
-        */
+        
 
     }
 
@@ -86,8 +86,8 @@ class TileMap extends TileSet{
 
         this.ctx.strokeStyle = "gray";
         this.ctx.beginPath();       
-        for(i = 0; i <= this.tileRowCount[0]; i++) {
-            for(ii = 0; ii <= this.tileColumnCount[0]; ii++) {
+        for(i = 0; i <= this.tileRowCount[0] + 1; i++) {
+            for(ii = 0; ii <= this.tileColumnCount[0] + 1; ii++) {
                 this.ctx.moveTo(0, xX);
                 this.ctx.lineTo((this.tileColumnCount[0] + 1)*this.tileSizeX, xX);
                 xX = xX + 32;
@@ -95,8 +95,8 @@ class TileMap extends TileSet{
             xX = this.locX; 
         }
 
-        for(i = 0; i <= this.tileRowCount[0]; i++) {
-            for(ii = 0; ii <= this.tileColumnCount[0]; ii++) {
+        for(i = 0; i <= this.tileRowCount[0] + 1; i++) {
+            for(ii = 0; ii <= this.tileColumnCount[0] + 1; ii++) {
                 this.ctx.moveTo(xY, 0);
                 this.ctx.lineTo(xY, (this.tileRowCount[0] + 1)*this.tileSizeY);
                 xY = xY + 32;

@@ -30,7 +30,7 @@ class TileMap extends TileSet{
     }
 
     drawTop() {
-        //this.mid_top_layer();
+        this.mid_top_layer();
         //this.top_layer();
         if(this.grid_conf == true) {
             this.grid();
@@ -90,8 +90,8 @@ class TileMap extends TileSet{
 
         for(i = 0; i <= this.tileRowCount[0]; i++) {
             for(ii = 0; ii <= this.tileColumnCount[0]; ii++) {
-                if(this.mid[terrain_index] != 0) {
-                    this.ctx.drawImage(this.image, this.getTile(this.mid[terrain_index] - 1).x, this.getTile(this.mid[terrain_index] - 1).y, this.tileSizeX, this.tileSizeY, xX, xY, this.tileSizeX, this.tileSizeY);
+                if(this.midtop[terrain_index] != 0) {
+                    this.ctx.drawImage(this.image, this.getTile(this.midtop[terrain_index] - 1).x, this.getTile(this.midtop[terrain_index] - 1).y, this.tileSizeX, this.tileSizeY, xX, xY, this.tileSizeX, this.tileSizeY);
                 }
                 terrain_index++;
                 xX = xX + 32;

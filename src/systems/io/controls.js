@@ -62,6 +62,18 @@ class Controls {
         y = e.layerY;
     }
 
+    touchStartHandler(e) {
+        mouseClicked = true;
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+    }
+
+    touchEndHandler(e) {
+        mouseClicked = false;
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+    }
+
     getRightPressed() {
         return rightPressed;
     }
@@ -105,5 +117,7 @@ document.addEventListener("keydown", controls.keyDownHandler, false);
 document.addEventListener("keyup", controls.keyUpHandler, false);
 document.addEventListener("mousedown", controls.mouseDownHandler, false);
 document.addEventListener("mouseup", controls.mouseUpHandler, false);
+document.addEventListener("touchstart", controls.touchStartHandler, false);
+document.addEventListener("touched", controls.touchEndHandler, false);
 
 export default Controls;

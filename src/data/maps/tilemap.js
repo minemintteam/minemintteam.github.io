@@ -20,7 +20,7 @@ class TileMap extends TileSet{
         this.bottom = this.map.layers[0].data;
         this.mid = this.map.layers[1].data;
         this.midtop = this.map.layers[2].data;
-        this.top = this.map;
+        this.top = this.map.layers[3].data;
 
         this.canvas = gfx.getCanvas();
         this.ctx = gfx.getContext();

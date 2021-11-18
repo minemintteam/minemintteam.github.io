@@ -15,10 +15,12 @@ class TileMap extends TileSet{
         this.locY = locY;
         this.grid_conf = grid_conf;
 
-        this.bottom = map[0];
-        this.mid = map[1];
-        this.midtop = map[2];
-        this.top = map[3];
+        this.map = map;
+
+        this.bottom = this.map.layers[0].data;
+        this.mid = this.map.layers[1].data;
+        this.midtop = this.map.layers[2].data;
+        this.top = this.map;
 
         this.canvas = gfx.getCanvas();
         this.ctx = gfx.getContext();

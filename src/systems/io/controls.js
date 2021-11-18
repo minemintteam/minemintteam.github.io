@@ -5,6 +5,7 @@ class Controls {
     constructor() {
         rightPressed = leftPressed = spacePressed = upPressed = downPressed = enterPressed = mouseClicked = false;
         x = y = 0;
+        this.gamepads = {};
     }
 
     keyDownHandler(e) {
@@ -104,6 +105,5 @@ document.addEventListener("keydown", controls.keyDownHandler, false);
 document.addEventListener("keyup", controls.keyUpHandler, false);
 document.addEventListener("mousedown", controls.mouseDownHandler, false);
 document.addEventListener("mouseup", controls.mouseUpHandler, false);
-
 
 export default Controls;

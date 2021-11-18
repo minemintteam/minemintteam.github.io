@@ -99,7 +99,6 @@ class Player extends SpriteSheet {
     }
 
     draw() {
-        console.log(this.tileIndexX + ", " + this.tileIndexY);
         if(this.input.getLeftPressed() == true) {
             if(this.input.getSpacePressed() == true) {
                 this.locX -= this.runningSpeed;

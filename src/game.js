@@ -7,7 +7,7 @@ import Controls from './systems/io/controls.js';
 import Graphics from './systems/io/graphics.js';
 
 //testing map
-import TileMap from './systems/gfx/tilemap.js';
+import TileMap from './data/maps/tilemap.js';
 
 //testing ui
 import Button from './systems/ui/button.js';
@@ -19,27 +19,28 @@ import MaterialColors from './systems/ui/colors/material.js';
 import Player from './data/player/player.js';
 
 let canvas = document.getElementById("game_canvas");
-canvas.width = document.body.clientWidth - 100;
-canvas.height = document.body.clientHeight - 100;
+canvas.width = document.body.clientWidth - 0;
+canvas.height = document.body.clientHeight - 0;
 
 let gfx = new Graphics(canvas, canvas.width, canvas.height);
 let input = new Controls();
 
 let mColors = new MaterialColors();
 
-let background = new Background([gfx,mColors.gray_200(), 1.0]);
+let background = new Background([gfx,mColors.indigo_300(), 1.0]);
 
 let xX = 30;
 let yY = 30;
 
-let Map = new TileMap("map", "../src/data/images/actors.png", 32, 32, 25, 40, false, gfx);
-let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 7, 4, gfx, input);
+var tempBool = false;
 
-let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2 - 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click") }]);
-let btLoadGame = new Button([gfx,input,"Load Game",canvas.width / 2,canvas.height / 2,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("load game click") }]);
-let btQuitGame = new Button([gfx,input,"Quit Game",canvas.width / 2,canvas.height / 2 + 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("quit game click") }]);
+let Map = new TileMap("map", "../src/data/images/tileset.png", 32, 32, 45, 45, true, gfx);
+let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 4, 0, gfx, input);
 
-let txMouseCoordinates = new Text([gfx,canvas.width / 2, canvas.height - 20, mColors.blue_900()]);
+let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click"); tempBool = true; }]);
+let btQuitGame = new Button([gfx,input,"Quit Game",canvas.width / 2,canvas.height - 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("quit game click"); tempBool = false; }]);
+
+let txMouseCoordinates = new Text([gfx,canvas.width / 2, canvas.height - 20, mColors.gray_200()]);
 
 class Game {
     drawBackgroundLayer() {
@@ -49,12 +50,12 @@ class Game {
     drawGameLayer() {
         Map.draw();
         PlayerOne.draw();
+        btQuitGame.draw();
     }
 
     drawUI() {
         btNewGame.draw();
-        btLoadGame.draw();
-        btQuitGame.draw();
+        
 
         txMouseCoordinates.draw("Mouse Pressed: " + input.getMouseClicked() + ", Last X Clicked: " + input.getMouseX() + ", Last Y Clicked: " + input.getMouseY());
     }  
@@ -62,8 +63,12 @@ class Game {
     update() {
         gfx.clear();
         this.drawBackgroundLayer();
-        this.drawGameLayer();
-        this.drawUI();    }
+        if(tempBool == false) {
+            this.drawUI();
+        } else {
+            this.drawGameLayer();
+        }
+    }
 }
 
 export default Game;

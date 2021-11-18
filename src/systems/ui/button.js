@@ -24,10 +24,6 @@ class Button  {
             this.text_width = this.ctx.measureText(this.text).width;
             this.text_height = 20;
             this.roundRectBackground(this.x - ((this.text_width + 20) / 2), this.y - (this.text_height + 35 / 2), this.ctx.measureText(this.text).width + 20, this.text_height + 20, 15, this.background_dark_color);
-            this.ctx.shadowColor = "#424242";
-            this.ctx.shadowBlur = 20;
-            this.ctx.shadowOffsetX = 3;
-            this.ctx.shadowOffsetY = 3;
             this.roundRectBorder(this.x - ((this.text_width + 20) / 2), this.y - (this.text_height + 35 / 2), this.ctx.measureText(this.text).width + 20, this.text_height + 20, 15, this.border_color);
             this.ctx.fillStyle = this.text_color;
             this.ctx.font = "20px Roboto";
@@ -37,10 +33,6 @@ class Button  {
             this.text_width = this.ctx.measureText(this.text).width;
             this.text_height = 20;
             this.roundRectBackground(this.x - ((this.text_width + 20) / 2), this.y - (this.text_height + 35 / 2), this.ctx.measureText(this.text).width + 20, this.text_height + 20, 15, this.background_color);
-            this.ctx.shadowColor = "#424242";
-            this.ctx.shadowBlur = 20;
-            this.ctx.shadowOffsetX = 3;
-            this.ctx.shadowOffsetY = 3;
             this.roundRectBorder(this.x - ((this.text_width + 20) / 2), this.y - (this.text_height + 35 / 2), this.ctx.measureText(this.text).width + 20, this.text_height + 20, 15, this.border_color);
             this.ctx.fillStyle = this.text_color;
             this.ctx.font = "20px Roboto";

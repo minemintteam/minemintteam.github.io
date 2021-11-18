@@ -1,11 +1,12 @@
-import TileSet from './tileset.js';
+import TileSet from '../../systems/gfx/tileset.js';
 
 class TileMap extends TileSet{
     constructor(name, image, tileSizeX, tileSizeY, tileRowCount, tileColumnCount, grid_conf, gfx) {
         super(name, image, tileSizeX, tileSizeY, tileColumnCount);
 
         this.name = name;
-        this.image = image;
+        this.image = new Image();
+        this.image.src = image;
         this.tileSizeX = tileSizeX;
         this.tileSizeY = tileSizeY;
         this.tileRowCount = tileRowCount;
@@ -17,8 +18,27 @@ class TileMap extends TileSet{
     }
 
     draw() {
+        this.layer_one();
+
         if(this.grid_conf == true) {
             this.grid();
+        }
+    }
+
+    layer_one() {
+        var xX = 0;
+        var xY = 0;
+
+        var i; 
+        var ii; 
+      
+        for(i = 0; i <= this.tileRowCount; i++) {
+            for(ii = 0; ii <= this.tileColumnCount; ii++) {
+                this.ctx.drawImage(this.image, 22*this.tileSizeX, 3*this.tileSizeY, this.tileSizeX, this.tileSizeY, xX, xY, this.tileSizeX, this.tileSizeY);
+                xX = xX + 32;
+            }
+            xX = 0;
+            xY = xY + 32; 
         }
     }
 
@@ -34,7 +54,7 @@ class TileMap extends TileSet{
         for(i = 0; i <= this.tileRowCount; i++) {
             for(ii = 0; ii <= this.tileColumnCount; ii++) {
                 this.ctx.moveTo(0, xX);
-                this.ctx.lineTo(this.canvas.width, xX);
+                this.ctx.lineTo((this.tileColumnCount + 1)*this.tileSizeX, xX);
                 xX = xX + 32;
             }
             xX = 32; 
@@ -43,7 +63,7 @@ class TileMap extends TileSet{
         for(i = 0; i <= this.tileRowCount; i++) {
             for(ii = 0; ii <= this.tileColumnCount; ii++) {
                 this.ctx.moveTo(xY, 0);
-                this.ctx.lineTo(xY, this.canvas.height);
+                this.ctx.lineTo(xY, (this.tileRowCount + 1)*this.tileSizeY);
                 xY = xY + 32;
             }
             xY = 32; 

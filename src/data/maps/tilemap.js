@@ -14,23 +14,27 @@ class TileMap extends TileSet{
         this.locX = locX;
         this.locY = locY;
         this.grid_conf = grid_conf;
+
         this.bottom = map[0];
         this.mid = map[1];
+        this.midtop = map[2];
+        this.top = map[3];
 
         this.canvas = gfx.getCanvas();
         this.ctx = gfx.getContext();
     }
 
-    draw() {
+    drawBottom() {
         this.bottom_layer();
         this.mid_layer();
+    }
 
-        
+    drawTop() {
+        //this.mid_top_layer();
+        //this.top_layer();
         if(this.grid_conf == true) {
             this.grid();
         }
-        
-
     }
 
     bottom_layer() {
@@ -54,6 +58,50 @@ class TileMap extends TileSet{
     }
 
     mid_layer() {
+        var xX = this.locX;
+        var xY = this.locY;
+
+        var i; 
+        var ii; 
+
+        var terrain_index = 0;
+
+        for(i = 0; i <= this.tileRowCount[0]; i++) {
+            for(ii = 0; ii <= this.tileColumnCount[0]; ii++) {
+                if(this.mid[terrain_index] != 0) {
+                    this.ctx.drawImage(this.image, this.getTile(this.mid[terrain_index] - 1).x, this.getTile(this.mid[terrain_index] - 1).y, this.tileSizeX, this.tileSizeY, xX, xY, this.tileSizeX, this.tileSizeY);
+                }
+                terrain_index++;
+                xX = xX + 32;
+            }
+            xX = this.locX;
+            xY = xY + 32; 
+        }
+    }
+
+    mid_top_layer() {
+        var xX = this.locX;
+        var xY = this.locY;
+
+        var i; 
+        var ii; 
+
+        var terrain_index = 0;
+
+        for(i = 0; i <= this.tileRowCount[0]; i++) {
+            for(ii = 0; ii <= this.tileColumnCount[0]; ii++) {
+                if(this.mid[terrain_index] != 0) {
+                    this.ctx.drawImage(this.image, this.getTile(this.mid[terrain_index] - 1).x, this.getTile(this.mid[terrain_index] - 1).y, this.tileSizeX, this.tileSizeY, xX, xY, this.tileSizeX, this.tileSizeY);
+                }
+                terrain_index++;
+                xX = xX + 32;
+            }
+            xX = this.locX;
+            xY = xY + 32; 
+        }
+    }
+
+    top_layer() {
         var xX = this.locX;
         var xY = this.locY;
 

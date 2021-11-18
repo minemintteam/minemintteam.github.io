@@ -56,8 +56,9 @@ class Game {
     }
 
     drawGameLayer() {
-        Map.draw();
+        Map.drawBottom();
         PlayerOne.draw();
+        Map.drawTop();
         btQuitGame.draw();
         btToggleGrid.draw();
     }

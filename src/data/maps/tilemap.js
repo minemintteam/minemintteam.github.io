@@ -25,9 +25,11 @@ class TileMap extends TileSet{
         this.bottom_layer();
         this.mid_layer();
 
+        /*
         if(this.grid_conf == true) {
             this.grid();
         }
+        */
 
     }
 
@@ -46,7 +48,7 @@ class TileMap extends TileSet{
                 terrain_index++;
                 xX = xX + 32;
             }
-            xX = 0;
+            xX = this.locX;
             xY = xY + 32; 
         }
     }
@@ -68,7 +70,7 @@ class TileMap extends TileSet{
                 terrain_index++;
                 xX = xX + 32;
             }
-            xX = 0;
+            xX = this.locX;
             xY = xY + 32; 
         }
     }
@@ -80,6 +82,8 @@ class TileMap extends TileSet{
         var i; 
         var ii; 
 
+        var terrain_index = 0;
+
         this.ctx.strokeStyle = "gray";
         this.ctx.beginPath();       
         for(i = 0; i <= this.tileRowCount[0]; i++) {
@@ -88,7 +92,7 @@ class TileMap extends TileSet{
                 this.ctx.lineTo((this.tileColumnCount[0] + 1)*this.tileSizeX, xX);
                 xX = xX + 32;
             }
-            xX = 32; 
+            xX = this.locX; 
         }
 
         for(i = 0; i <= this.tileRowCount[0]; i++) {
@@ -97,7 +101,7 @@ class TileMap extends TileSet{
                 this.ctx.lineTo(xY, (this.tileRowCount[0] + 1)*this.tileSizeY);
                 xY = xY + 32;
             }
-            xY = 32; 
+            xY = this.locY; 
         }
         this.ctx.stroke();
     }

@@ -33,22 +33,20 @@ let xX = canvas.width / 2;
 let yY = canvas.height / 2;
 
 var tempBool = false;
-var tempBool2 = false;
 
-let map = await fetch('../src/data/maps/test.json').then(response => response.json());
+let map = await fetch('../src/data/maps/largemaptest.json').then(response => response.json());
 
 let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 4, 0, gfx, input);
-let Map = new TileMap("map", "../src/data/images/tileset.png", 32, 32, [24,32], [24,32], 0, 0, tempBool2, map,gfx);
+let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, map, gfx);
 
-let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click"); tempBool = true; }]);
-let btQuitGame = new Button([gfx,input,"Quit Game",canvas.width - 100, canvas.height / 2 - 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("quit game click"); tempBool = false; }]);
-let btToggleGrid = new Button([gfx,input,"Toggle Grid",canvas.width - 100,canvas.height / 2 + 60,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { Map.gridToggle(); }]);
+let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2 + 20,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click"); tempBool = true; }]);
+let btQuitGame = new Button([gfx,input,"Quit Game",canvas.width - 100, canvas.height / 2,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("quit game click"); tempBool = false; }]);
 
-
-let txMouseCoordinates = new Text([gfx,canvas.width / 2, canvas.height - 20, mColors.gray_200()]);
+let txTitle = new Text([gfx,canvas.width / 2, canvas.height /2 - 20, mColors.gray_200()]);
 
 class Game {
 
+    /*
     collisionDetection() {
         for(var c=0; c<brickColumnCount; c++) {
             for(var r=0; r<brickRowCount; r++) {
@@ -59,6 +57,7 @@ class Game {
             }
         }
     }
+    */
 
     drawBackgroundLayer() {
         background.drawColor();
@@ -69,14 +68,11 @@ class Game {
         PlayerOne.draw();
         Map.drawTop();
         btQuitGame.draw();
-        btToggleGrid.draw();
     }
 
     drawUI() {
+        txTitle.draw("Game/Engine");
         btNewGame.draw();
-        
-
-        txMouseCoordinates.draw("Mouse Pressed: " + input.getMouseClicked() + ", Last X Clicked: " + input.getMouseX() + ", Last Y Clicked: " + input.getMouseY());
     }  
 
     update() {

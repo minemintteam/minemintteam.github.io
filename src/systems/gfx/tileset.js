@@ -10,15 +10,15 @@ class TileSet {
 
     getTile(tileIndex) {
         return {
-            x: (tileIndex % this.tileColumnCount[1]) * this.tileSizeX,
-            y: Math.floor(tileIndex / this.tileRowCount[1]) * this.tileSizeY,
+            x: (tileIndex % this.tileColumnCount) * this.tileSizeX,
+            y: Math.floor(tileIndex / this.tileRowCount) * this.tileSizeY,
             width: this.tileSizeX,
             height: this.tileSizeY
         };
     }
 
     getTileIndex(x, y) {
-        return Math.floor(y / this.tileSizeY) * this.tileColumnCount[1] + Math.floor(x / this.tileSizeX);
+        return Math.floor(y / this.tileSizeY) * this.tileColumnCount + Math.floor(x / this.tileSizeX);
     }
 
     getImage() {

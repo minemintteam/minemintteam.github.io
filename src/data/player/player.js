@@ -101,33 +101,33 @@ class Player extends SpriteSheet {
     draw() {
         if(this.input.getLeftPressed() == true) {
             if(this.input.getSpacePressed() == true) {
-                this.locX -= this.runningSpeed;
+                Math.round(this.locX -= this.runningSpeed);
             } else {
-                this.locX -= this.walkSpeed;
+                Math.round(this.locX -= this.walkSpeed);
             }
             this.tileIndexY = this.originY + 1;
         }
         if(this.input.getRightPressed() == true) {
             if(this.input.getSpacePressed() == true) {
-                this.locX += this.runningSpeed;
+                Math.round(this.locX += this.runningSpeed);
             } else {
-                this.locX += this.walkSpeed;
+                Math.round(this.locX += this.walkSpeed);
             }
             this.tileIndexY = this.originY + 2;
         }
         if(this.input.getUpPressed() == true) {
             if(this.input.getSpacePressed() == true) {
-                this.locY -= this.runningSpeed;
+                Math.round(this.locY -= this.runningSpeed);
             } else {
-                this.locY -= this.walkSpeed;
+                Math.round(this.locY -= this.walkSpeed);
             }
             this.tileIndexY = this.originY + 3;
         }
         if(this.input.getDownPressed() == true) {
             if(this.input.getSpacePressed() == true) {
-                this.locY += this.runningSpeed;
+                Math.round(this.locY += this.runningSpeed);
             } else {
-                this.locY += this.walkSpeed;
+                Math.round(this.locY += this.walkSpeed);
             }
             this.tileIndexY = this.originY;
         }

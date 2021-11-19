@@ -29,6 +29,8 @@ class Player extends SpriteSheet {
 
         this.moving = false;
 
+        this.ctx.scale(1.0,1.0);
+
         setInterval(() => { this.animate(); }, 300);
     }
 
@@ -101,33 +103,33 @@ class Player extends SpriteSheet {
     draw() {
         if(this.input.getLeftPressed() == true) {
             if(this.input.getSpacePressed() == true) {
-                Math.round(this.locX -= this.runningSpeed);
+                Math.floor(this.locX -= this.runningSpeed);
             } else {
-                Math.round(this.locX -= this.walkSpeed);
+                Math.floor(this.locX -= this.walkSpeed);
             }
             this.tileIndexY = this.originY + 1;
         }
         if(this.input.getRightPressed() == true) {
             if(this.input.getSpacePressed() == true) {
-                Math.round(this.locX += this.runningSpeed);
+                Math.floor(this.locX += this.runningSpeed);
             } else {
-                Math.round(this.locX += this.walkSpeed);
+                Math.floor(this.locX += this.walkSpeed);
             }
             this.tileIndexY = this.originY + 2;
         }
         if(this.input.getUpPressed() == true) {
             if(this.input.getSpacePressed() == true) {
-                Math.round(this.locY -= this.runningSpeed);
+                Math.floor(this.locY -= this.runningSpeed);
             } else {
-                Math.round(this.locY -= this.walkSpeed);
+                Math.floor(this.locY -= this.walkSpeed);
             }
             this.tileIndexY = this.originY + 3;
         }
         if(this.input.getDownPressed() == true) {
             if(this.input.getSpacePressed() == true) {
-                Math.round(this.locY += this.runningSpeed);
+                Math.floor(this.locY += this.runningSpeed);
             } else {
-                Math.round(this.locY += this.walkSpeed);
+                Math.floor(this.locY += this.walkSpeed);
             }
             this.tileIndexY = this.originY;
         }

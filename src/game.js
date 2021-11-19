@@ -22,8 +22,8 @@ import Player from './data/player/player.js';
 import Camera from './systems/gfx/camera.js';
 
 let canvas = document.getElementById("game_canvas");
-canvas.width = document.body.clientWidth - 100;
-canvas.height = document.body.clientHeight - 100;
+canvas.width = 800;
+canvas.height = 600;
 
 let gfx = new Graphics(canvas, canvas.width, canvas.height);
 let input = new Controls();

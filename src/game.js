@@ -22,8 +22,8 @@ import Player from './data/player/player.js';
 import Camera from './systems/gfx/camera.js';
 
 let canvas = document.getElementById("game_canvas");
-canvas.width = document.body.clientWidth - 0;
-canvas.height = document.body.clientHeight - 0;
+canvas.width = document.body.clientWidth - 100;
+canvas.height = document.body.clientHeight - 100;
 
 let gfx = new Graphics(canvas, canvas.width, canvas.height);
 let input = new Controls();
@@ -37,7 +37,7 @@ let yY = canvas.height / 2;
 
 var tempBool = false;
 
-let map = await fetch('../src/data/maps/massivemap.json').then(response => response.json());
+let map = await fetch('../src/data/maps/largemaptest.json').then(response => response.json());
 
 let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 4, 0, gfx, input);
 let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, map, gfx);
@@ -45,7 +45,6 @@ let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, map, gfx);
 let Cam = new Camera(PlayerOne, 32, 32, gfx);
 
 let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2 + 20,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click"); tempBool = true; }]);
-let btQuitGame = new Button([gfx,input,"Quit Game",canvas.width - 100, canvas.height / 2,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("quit game click"); tempBool = false; }]);
 
 let txTitle = new Text([gfx,canvas.width / 2, canvas.height /2 - 20, mColors.gray_200()]);
 
@@ -73,7 +72,6 @@ class Game {
         Map.drawBottom();
         PlayerOne.draw();
         Map.drawTop();
-        btQuitGame.draw();
     }
 
     drawUI() {

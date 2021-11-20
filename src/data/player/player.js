@@ -19,7 +19,7 @@ class Player extends SpriteSheet {
         this.tileColumnCount = tileColumnCount;
 
         this.walkSpeed = 2.5;
-        this.runningSpeed = 6;
+        this.runningSpeed = 5;
 
         this.tileIndexX = tileIndexX;
         this.tileIndexY = tileIndexY;
@@ -29,7 +29,7 @@ class Player extends SpriteSheet {
 
         this.moving = false;
 
-        this.ctx.scale(1.0,1.0);
+        //this.ctx.scale(1.0,1.0);
 
         setInterval(() => { this.animate(); }, 300);
     }
@@ -102,35 +102,19 @@ class Player extends SpriteSheet {
 
     draw() {
         if(this.input.getLeftPressed() == true) {
-            if(this.input.getSpacePressed() == true) {
-                Math.floor(this.locX -= this.runningSpeed);
-            } else {
-                Math.floor(this.locX -= this.walkSpeed);
-            }
+            this.locX -= this.runningSpeed | 0;
             this.tileIndexY = this.originY + 1;
         }
         if(this.input.getRightPressed() == true) {
-            if(this.input.getSpacePressed() == true) {
-                Math.floor(this.locX += this.runningSpeed);
-            } else {
-                Math.floor(this.locX += this.walkSpeed);
-            }
+            this.locX += this.runningSpeed | 0;
             this.tileIndexY = this.originY + 2;
         }
         if(this.input.getUpPressed() == true) {
-            if(this.input.getSpacePressed() == true) {
-                Math.floor(this.locY -= this.runningSpeed);
-            } else {
-                Math.floor(this.locY -= this.walkSpeed);
-            }
+            this.locY -= this.runningSpeed | 0;
             this.tileIndexY = this.originY + 3;
         }
         if(this.input.getDownPressed() == true) {
-            if(this.input.getSpacePressed() == true) {
-                Math.floor(this.locY += this.runningSpeed);
-            } else {
-                Math.floor(this.locY += this.walkSpeed);
-            }
+            this.locY += this.runningSpeed | 0;
             this.tileIndexY = this.originY;
         }
         if(this.input.getLeftPressed() == true || this.input.getRightPressed() == true || this.input.getUpPressed() == true || this.input.getDownPressed() == true) {

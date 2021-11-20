@@ -16,19 +16,19 @@ class Camera {
         if(this.x != this.lastX) {
             if(this.x > this.lastX) {
                 var diff = this.x - this.lastX;
-                this.ctx.translate(-diff, 0);
+                this.ctx.translate(-diff|0, 0);
             } else if(this.x < this.lastX) {
                 var diff = this.lastX - this.x;
-                this.ctx.translate(diff, 0);
+                this.ctx.translate(diff|0, 0);
             }
         }
         if(this.y != this.lastY) {
             if(this.y > this.lastY) {
                 var diff = this.y - this.lastY;
-                this.ctx.translate(0, -diff);
+                this.ctx.translate(0, -diff|0);
             } else if(this.y < this.lastY) {
                 var diff = this.lastY - this.y;
-                this.ctx.translate(0, diff);
+                this.ctx.translate(0, diff|0);
             }
         }
         this.lastX = this.x;

@@ -22,8 +22,8 @@ import Player from './data/player/player.js';
 import Camera from './systems/gfx/camera.js';
 
 let canvas = document.getElementById("game_canvas");
-canvas.width = 800;
-canvas.height = 600;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 let gfx = new Graphics(canvas, canvas.width, canvas.height);
 let input = new Controls();
@@ -37,7 +37,7 @@ let yY = canvas.height / 2;
 
 var tempBool = false;
 
-let map = await fetch('../src/data/maps/massivemap.json').then(response => response.json());
+let map = await fetch('../src/data/maps/largemaptest.json').then(response => response.json());
 
 let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 4, 0, gfx, input);
 let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, map, gfx);

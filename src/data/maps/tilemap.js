@@ -29,7 +29,7 @@ class TileMap extends TileSet{
             for(ii = 0; ii <= this.map.height - 1; ii++) {
                 for(iii = 0; iii <= this.map.width - 1; iii++) {
                     if(this.map.layers[i].data[terrain_index] != 0) {
-                        this.ctx.drawImage(this.image, Math.round(this.getTile(this.map.layers[i].data[terrain_index] - 1).x), Math.round(this.getTile(this.map.layers[i].data[terrain_index] - 1).y), this.map.tilewidth, this.map.tileheight, xX, xY, this.map.tilewidth, this.map.tileheight);                        
+                        this.ctx.drawImage(this.image, this.getTile(this.map.layers[i].data[terrain_index] - 1).x, this.getTile(this.map.layers[i].data[terrain_index] - 1).y, this.map.tilewidth, this.map.tileheight, xX, xY, this.map.tilewidth, this.map.tileheight);                        
                     }
                     terrain_index++;
                     xX = xX + this.map.tilewidth;
@@ -55,7 +55,7 @@ class TileMap extends TileSet{
         for(i = 0; i <= this.map.height - 1; i++) {
             for(ii = 0; ii <= this.map.width - 1; ii++) {
                 if(this.map.layers[2].data[terrain_index] != 0) {
-                    this.ctx.drawImage(this.image, Math.round(this.getTile(this.map.layers[2].data[terrain_index] - 1).x), Math.round(this.getTile(this.map.layers[2].data[terrain_index] - 1).y), this.map.tilewidth, this.map.tileheight, xX, xY, this.map.tilewidth, this.map.tileheight);                        
+                    this.ctx.drawImage(this.image, this.getTile(this.map.layers[2].data[terrain_index] - 1).x, this.getTile(this.map.layers[2].data[terrain_index] - 1).y, this.map.tilewidth, this.map.tileheight, xX, xY, this.map.tilewidth, this.map.tileheight);                        
                 }
                 terrain_index++;
                 xX = xX + this.map.tilewidth;

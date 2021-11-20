@@ -22,8 +22,8 @@ import Player from './data/player/player.js';
 import Camera from './systems/gfx/camera.js';
 
 let canvas = document.getElementById("game_canvas");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 800;
+canvas.height = 600;
 
 let gfx = new Graphics(canvas, canvas.width, canvas.height);
 let input = new Controls();
@@ -37,10 +37,10 @@ let yY = canvas.height / 2;
 
 var tempBool = false;
 
-let map = await fetch('../src/data/maps/largemaptest.json').then(response => response.json());
+let map = await fetch('../src/data/maps/mmotiny.json').then(response => response.json());
 
 let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 4, 0, gfx, input);
-let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, map, gfx);
+let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, xX, yY, map, gfx);
 
 let Cam = new Camera(PlayerOne, 32, 32, gfx);
 
@@ -68,7 +68,10 @@ class Game {
     }
 
     drawGameLayer() {
-        Cam.update(PlayerOne.getLocation().x, PlayerOne.getLocation().y);
+        var tX = PlayerOne.getLocation().x;
+        var tY = PlayerOne.getLocation().y;
+        Cam.update(tX, tY);
+        Map.updatePlayerLocation(tX, tY);
         Map.drawBottom();
         PlayerOne.draw();
         Map.drawTop();

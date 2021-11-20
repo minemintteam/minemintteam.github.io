@@ -48,6 +48,8 @@ let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height 
 
 let txTitle = new Text([gfx,canvas.width / 2, canvas.height /2 - 20, mColors.gray_200()]);
 
+var playerStart = false;
+
 class Game {
 
     /*
@@ -89,7 +91,10 @@ class Game {
             this.drawUI();
         } else {
             this.drawGameLayer();
-            
+            if(playerStart == false) {
+                playerStart = true;
+                PlayerOne.setStart(250 * 32, 250 * 32);
+            }
         }
     }
 }

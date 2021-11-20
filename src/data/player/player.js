@@ -18,8 +18,7 @@ class Player extends SpriteSheet {
         this.tileRowCount = tileRowCount;
         this.tileColumnCount = tileColumnCount;
 
-        this.walkSpeed = 2.5;
-        this.runningSpeed = 5;
+        this.walkSpeed = 5;
 
         this.tileIndexX = tileIndexX;
         this.tileIndexY = tileIndexY;
@@ -102,19 +101,19 @@ class Player extends SpriteSheet {
 
     draw() {
         if(this.input.getLeftPressed() == true) {
-            this.locX -= this.runningSpeed | 0;
+            this.locX -= this.walkSpeed | 0;
             this.tileIndexY = this.originY + 1;
         }
         if(this.input.getRightPressed() == true) {
-            this.locX += this.runningSpeed | 0;
+            this.locX += this.walkSpeed | 0;
             this.tileIndexY = this.originY + 2;
         }
         if(this.input.getUpPressed() == true) {
-            this.locY -= this.runningSpeed | 0;
+            this.locY -= this.walkSpeed | 0;
             this.tileIndexY = this.originY + 3;
         }
         if(this.input.getDownPressed() == true) {
-            this.locY += this.runningSpeed | 0;
+            this.locY += this.walkSpeed | 0;
             this.tileIndexY = this.originY;
         }
         if(this.input.getLeftPressed() == true || this.input.getRightPressed() == true || this.input.getUpPressed() == true || this.input.getDownPressed() == true) {
@@ -122,8 +121,6 @@ class Player extends SpriteSheet {
         } else {
             this.moving = false;
         }
-        
-        //this.ctx.drawImage(this.image, this.tileIndexX*this.tileSizeX, this.tileIndexY*this.tileSizeY, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).width, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).height, this.locX, this.locY, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).width, this.getTile(this.getTileIndex(this.tileIndexX, this.tileIndexY)).height);
         this.ctx.drawImage(this.image, this.tileIndexX*this.tileSizeX, this.tileIndexY*this.tileSizeY, this.tileSizeX, this.tileSizeY, this.locX, this.locY, this.tileSizeX, this.tileSizeY);
     }
 
@@ -167,6 +164,11 @@ class Player extends SpriteSheet {
                 this.mana = 0;
             }
         }
+    }
+
+    setStart(x, y) {
+        this.locX = x;
+        this.locY = y;
     }
 }
 

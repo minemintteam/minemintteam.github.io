@@ -1,5 +1,27 @@
 //2021-2022 samuel r rivera-bonilla
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDSAvvWJxE1kKUWpg5x5VAhjLqhtvQ5EtQ",
+    authDomain: "funtest-9070f.firebaseapp.com",
+    databaseURL: "https://funtest-9070f-default-rtdb.firebaseio.com",
+    projectId: "funtest-9070f",
+    storageBucket: "funtest-9070f.appspot.com",
+    messagingSenderId: "858488562846",
+    appId: "1:858488562846:web:2ba859dde4e82dd283878f"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+let database = getDatabase();
+
 //testing input
 import Controls from './systems/io/controls.js';
 
@@ -39,6 +61,8 @@ var tempBool = false;
 
 let map = await fetch('../src/data/maps/mmotiny.json').then(response => response.json());
 
+
+var otherPlayers = [];
 let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 1, 4, gfx, input);
 let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, xX, yY, map, gfx);
 
@@ -49,6 +73,27 @@ let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height 
 let txTitle = new Text([gfx,canvas.width / 2, canvas.height /2 - 20, mColors.gray_200()]);
 
 var playerStart = false;
+
+async function updateFirebase() {
+    set(ref(database, 'users/SamTest'), {
+        x: PlayerOne.getLocation().x,
+        y: PlayerOne.getLocation().y,
+        health: PlayerOne.getHealth(),
+        mana: PlayerOne.getMana()
+      });
+      updateGameFromServer();
+}
+
+async function updateGameFromServer() {
+    const players = ref(database, 'users');
+    onValue(players, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+    });
+
+}
+
+setInterval(updateFirebase, 1000/64);
 
 class Game {
 

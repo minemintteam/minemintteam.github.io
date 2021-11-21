@@ -1,5 +1,8 @@
 var rightPressed, leftPressed, spacePressed, upPressed, downPressed, enterPressed, mouseClicked, x, y;
 
+var screenWidth = window.innerWidth;
+var screenHeight = window.innerHeight;
+
 class Controls {
 
     constructor() {

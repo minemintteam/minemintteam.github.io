@@ -39,7 +39,7 @@ var tempBool = false;
 
 let map = await fetch('../src/data/maps/mmotiny.json').then(response => response.json());
 
-let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 4, 0, gfx, input);
+let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 1, 4, gfx, input);
 let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, xX, yY, map, gfx);
 
 let Cam = new Camera(PlayerOne, 32, 32, gfx);

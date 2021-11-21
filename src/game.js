@@ -1,27 +1,5 @@
 //2021-2022 samuel r rivera-bonilla
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyDSAvvWJxE1kKUWpg5x5VAhjLqhtvQ5EtQ",
-    authDomain: "funtest-9070f.firebaseapp.com",
-    databaseURL: "https://funtest-9070f-default-rtdb.firebaseio.com",
-    projectId: "funtest-9070f",
-    storageBucket: "funtest-9070f.appspot.com",
-    messagingSenderId: "858488562846",
-    appId: "1:858488562846:web:2ba859dde4e82dd283878f"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-let database = getDatabase();
-
 //testing input
 import Controls from './systems/io/controls.js';
 
@@ -64,8 +42,6 @@ var tempBool = false;
 
 let map = await fetch('../src/data/maps/mmotiny.json').then(response => response.json());
 
-
-var otherPlayers = [];
 let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 1, 4, gfx, input);
 let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, xX, yY, map, gfx);
 
@@ -76,46 +52,6 @@ let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height 
 let txTitle = new Text([gfx,canvas.width / 2, canvas.height /2 - 20, mColors.gray_200()]);
 
 var playerStart = false;
-
-let player_name = "SamTest";
-
-async function updateFirebase() {
-    set(ref(database, 'users/' + player_name), {
-        name: player_name,
-        x: PlayerOne.getLocation().x,
-        y: PlayerOne.getLocation().y,
-        health: PlayerOne.getHealth(),
-        mana: PlayerOne.getMana(),
-        moving: PlayerOne.getMoving()
-      });
-}
-
-async function updateGameFromServer() {
-    const players = ref(database, 'users/');
-    onValue(players, (snapshot) => {
-        const data = snapshot.val();
-        var playerObjects = Object.keys(data); 
-        var i = 0; var ii = 0; var lastLength = otherPlayers.length;
-        if(lastLength == 0) {
-            for(i = 0; i < playerObjects.length; i++) {
-                if(playerObjects[i] != player_name) {
-                    otherPlayers[ii] = new Friendly(data[playerObjects[i]].name, data[playerObjects[i]].health, data[playerObjects[i]].mana, "../src/data/images/actors.png", data[playerObjects[i]].x, data[playerObjects[i]].y, 32, 32, 4, 3, 1, 4, gfx);
-                    ii++;
-                }
-            }
-        } else {
-            ii = 0;
-            for(i = 0; i < playerObjects.length; i++) {
-                if(playerObjects[i] != player_name) {
-                    otherPlayers[ii].updateFriendlyPlayer(data[playerObjects[i]].x, data[playerObjects[i]].y, data[playerObjects[i]].health, data[playerObjects[i]].mana, data[playerObjects[i]].moving);
-                    ii++;
-                }
-            }            
-        }
-    });
-    updateFirebase();
-}
-setInterval(updateGameFromServer, 1000/64);
 
 class Game {
 
@@ -144,10 +80,6 @@ class Game {
         Map.drawBottom();
         var i = 0;
         
-        for(i = 0; i < otherPlayers.length; i++) {
-            otherPlayers[i].draw();
-        }
-        
         PlayerOne.draw();
         Map.drawTop();
     }
@@ -157,7 +89,7 @@ class Game {
         btNewGame.draw();
     }  
 
-    update() {
+    async update() {
         gfx.clear();
         this.drawBackgroundLayer();
         if(tempBool == false) {
@@ -166,7 +98,7 @@ class Game {
             this.drawGameLayer();
             if(playerStart == false) {
                 playerStart = true;
-                PlayerOne.setStart(250 * 32, 250 * 32);
+                PlayerOne.setStart(250*32, 250*32);
             }
         }
     }

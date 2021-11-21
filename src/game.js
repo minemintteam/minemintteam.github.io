@@ -24,12 +24,37 @@ import Friendly from './data/npc/friendly.js';
 //testing camera 
 import Camera from './systems/gfx/camera.js';
 
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
 let canvas = document.getElementById("game_canvas");
-canvas.width = 800;
-canvas.height = 600;
+if(isMobile.any()){
+    canvas.width = window.innerWidth - 100;
+    canvas.height = window.innerHeight - 100;
+} else {
+    canvas.width = 800;
+    canvas.height = 600;
+}
 
 let gfx = new Graphics(canvas, canvas.width, canvas.height);
-let input = new Controls();
+let input = new Controls(canvas.width, canvas.height);
 
 let mColors = new MaterialColors();
 

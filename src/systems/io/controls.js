@@ -1,14 +1,17 @@
-var rightPressed, leftPressed, spacePressed, upPressed, downPressed, enterPressed, mouseClicked, x, y;
+var rightPressed, leftPressed, spacePressed, upPressed, downPressed, enterPressed, mouseClicked, x, y, cw, ch;
 
 var screenWidth = window.innerWidth;
 var screenHeight = window.innerHeight;
 
 class Controls {
 
-    constructor() {
+    constructor(canvas_width, canvas_height) {
         rightPressed = leftPressed = spacePressed = upPressed = downPressed = enterPressed = mouseClicked = false;
         x = y = 0;
-        this.gamepads = {};
+
+        cw = canvas_width;
+        ch = canvas_height;
+
     }
 
     keyDownHandler(e) {
@@ -67,14 +70,15 @@ class Controls {
 
     touchStartHandler(e) {
         mouseClicked = true;
-        x = e.touches[0].clientX - ((screenWidth - 800) / 2);
-        y = e.touches[0].clientY - ((screenHeight - 600) / 2);
+        console.log(cw, ch);
+        x = e.touches[0].clientX - ((screenWidth - cw) / 2);
+        y = e.touches[0].clientY - ((screenHeight - ch) / 2);
     }
 
     touchEndHandler(e) {
         mouseClicked = false;
-        x = e.touches[0].clientX - ((screenWidth - 800) / 2);
-        y = e.touches[0].clientY - ((screenHeight - 600) / 2);
+        x = e.touches[0].clientX - ((screenWidth - cw) / 2);
+        y = e.touches[0].clientY - ((screenHeight - ch) / 2);
     }
 
     getRightPressed() {

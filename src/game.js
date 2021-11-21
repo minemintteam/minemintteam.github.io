@@ -55,19 +55,6 @@ var playerStart = false;
 
 class Game {
 
-    /*
-    collisionDetection() {
-        for(var c=0; c<brickColumnCount; c++) {
-            for(var r=0; r<brickRowCount; r++) {
-                var b = bricks[c][r];
-                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
-                    dy = -dy;
-                }
-            }
-        }
-    }
-    */
-
     drawBackgroundLayer() {
         background.drawColor();
     }

@@ -28,8 +28,8 @@ class Friendly extends SpriteSheet {
     }
     
     updateFriendlyPlayer(x, y, health, mana, moving) {
-        this.locX += x;
-        this.locY += y;
+        this.locX = x;
+        this.locY = y;
         this.health = health;
         this.mana = mana;
         this.moving = moving;

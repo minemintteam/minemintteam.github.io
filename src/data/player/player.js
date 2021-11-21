@@ -124,6 +124,10 @@ class Player extends SpriteSheet {
         this.ctx.drawImage(this.image, this.tileIndexX*this.tileSizeX, this.tileIndexY*this.tileSizeY, this.tileSizeX, this.tileSizeY, this.locX, this.locY, this.tileSizeX, this.tileSizeY);
     }
 
+    getMoving() {
+        return this.moving;
+    }
+
     getLocation() {
         return { x: this.locX, y: this.locY };
     }

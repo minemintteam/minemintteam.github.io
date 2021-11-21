@@ -85,7 +85,8 @@ async function updateFirebase() {
         x: PlayerOne.getLocation().x,
         y: PlayerOne.getLocation().y,
         health: PlayerOne.getHealth(),
-        mana: PlayerOne.getMana()
+        mana: PlayerOne.getMana(),
+        moving: PlayerOne.getMoving()
       });
 }
 
@@ -94,19 +95,27 @@ async function updateGameFromServer() {
     onValue(players, (snapshot) => {
         const data = snapshot.val();
         var playerObjects = Object.keys(data); 
-        var i = 0;
-        for(i = 0; i < playerObjects.length; i++) {
-            if(playerObjects[i] != player_name) {
-                otherPlayers[i - 1] = new Friendly(data[playerObjects[i]].name, data[playerObjects[i]].health, data[playerObjects[i]].mana, "../src/data/images/actors.png", data[playerObjects[i]].x, data[playerObjects[i]].y, 32, 32, 4, 3, 1, 4, gfx);
+        var i = 0; var ii = 0; var lastLength = otherPlayers.length;
+        if(lastLength == 0) {
+            for(i = 0; i < playerObjects.length; i++) {
+                if(playerObjects[i] != player_name) {
+                    otherPlayers[ii] = new Friendly(data[playerObjects[i]].name, data[playerObjects[i]].health, data[playerObjects[i]].mana, "../src/data/images/actors.png", data[playerObjects[i]].x, data[playerObjects[i]].y, 32, 32, 4, 3, 1, 4, gfx);
+                    ii++;
+                }
             }
+        } else {
+            ii = 0;
+            for(i = 0; i < playerObjects.length; i++) {
+                if(playerObjects[i] != player_name) {
+                    otherPlayers[ii].updateFriendlyPlayer(data[playerObjects[i]].x, data[playerObjects[i]].y, data[playerObjects[i]].health, data[playerObjects[i]].mana, data[playerObjects[i]].moving);
+                    ii++;
+                }
+            }            
         }
-        console.log(otherPlayers);
     });
-
+    updateFirebase();
 }
-updateGameFromServer();
-
-//setInterval(updateFirebase, 1000/64);
+setInterval(updateGameFromServer, 1000/64);
 
 class Game {
 

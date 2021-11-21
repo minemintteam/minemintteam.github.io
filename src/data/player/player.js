@@ -28,6 +28,12 @@ class Player extends SpriteSheet {
 
         this.moving = false;
 
+        this.collision = [];
+        this.collision_left = false;
+        this.collision_right = false;
+        this.collision_up = false;
+        this.collision_down = false;
+
         //this.ctx.scale(1.0,1.0);
 
         setInterval(() => { this.animate(); }, 300);
@@ -100,19 +106,21 @@ class Player extends SpriteSheet {
     }
 
     draw() {
-        if(this.input.getLeftPressed() == true) {
+        this.collision_right = this.collision_left = this.collision_up = this.collision_down = false;
+        this.isColliding();
+        if(this.input.getLeftPressed() == true && this.collision_left == false) {
             this.locX -= this.walkSpeed | 0;
             this.tileIndexY = this.originY + 1;
         }
-        if(this.input.getRightPressed() == true) {
+        if(this.input.getRightPressed() == true && this.collision_right == false) {
             this.locX += this.walkSpeed | 0;
             this.tileIndexY = this.originY + 2;
         }
-        if(this.input.getUpPressed() == true) {
+        if(this.input.getUpPressed() == true && this.collision_up == false) {
             this.locY -= this.walkSpeed | 0;
             this.tileIndexY = this.originY + 3;
         }
-        if(this.input.getDownPressed() == true) {
+        if(this.input.getDownPressed() == true && this.collision_down == false) {
             this.locY += this.walkSpeed | 0;
             this.tileIndexY = this.originY;
         }
@@ -161,6 +169,7 @@ class Player extends SpriteSheet {
             }
         }
     }
+
     manaSpend(x) {
         if(this.mana > 0) {
             this.mana -= x;
@@ -170,9 +179,31 @@ class Player extends SpriteSheet {
         }
     }
 
-    setStart(x, y) {
+    isColliding() {
+        var i;
+        for(i = 0; i < this.collision.length; i++) {
+            if(this.locX < this.collision[i].x + this.tileSizeX && this.locX + this.tileSizeX > this.collision[i].x && this.locY < this.collision[i].y + this.tileSizeY && this.locY + this.tileSizeY > this.collision[i].y) {
+                if(this.locX + this.tileSizeX  < this.collision[i].x + this.tileSizeX) {
+                    this.collision_right = true;
+                }
+                if(this.locX > this.collision[i].x) {
+                    this.collision_left = true;
+                } 
+                if(this.locY + this.tileSizeY < this.collision[i].y + this.tileSizeY) {
+                    this.collision_down = true;
+                } 
+                if(this.locY > this.collision[i].y) {
+                    this.collision_up = true;
+                } 
+            } 
+        }
+        return false;
+    }
+    
+    setStart(x, y, collision) {
         this.locX = x;
         this.locY = y;
+        this.collision = collision;
     }
 }
 

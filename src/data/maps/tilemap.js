@@ -11,6 +11,7 @@ class TileMap extends TileSet{
         this.locY = locY;
 
         this.map = map;
+        this.collision = this.map.layers[3].objects;
 
         this.playerX = playerX;
         this.playerY = playerY;
@@ -75,6 +76,10 @@ class TileMap extends TileSet{
     updatePlayerLocation(playerX, playerY) {
         this.playerX = playerX;
         this.playerY = playerY;
+    }
+
+    getCollisionData() {
+        return this.collision;
     }
 }
 

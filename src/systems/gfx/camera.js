@@ -34,6 +34,10 @@ class Camera {
         this.lastX = this.x;
         this.lastY = this.y;
     }
+
+    getLocation() {
+        return {x: this.x, y: this.y};
+    }
 }
 
 export default Camera;

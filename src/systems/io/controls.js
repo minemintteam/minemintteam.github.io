@@ -67,14 +67,14 @@ class Controls {
 
     touchStartHandler(e) {
         mouseClicked = true;
-        x = e.touches[0].clientX;
-        y = e.touches[0].clientY;
+        x = e.touches[0].clientX - ((screenWidth - 800) / 2);
+        y = e.touches[0].clientY - ((screenHeight - 600) / 2);
     }
 
     touchEndHandler(e) {
         mouseClicked = false;
-        x = e.touches[0].clientX;
-        y = e.touches[0].clientY;
+        x = e.touches[0].clientX - ((screenWidth - 800) / 2);
+        y = e.touches[0].clientY - ((screenHeight - 600) / 2);
     }
 
     getRightPressed() {

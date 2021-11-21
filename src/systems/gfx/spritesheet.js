@@ -11,7 +11,7 @@ class SpriteSheet {
     getTile(tileIndex) {
         return {
             x: (tileIndex % this.tileColumnCount) * this.tileSizeX,
-            y: Math.floor(tileIndex / this.tileColumnCount) * this.tileSizeY,
+            y: Math.floor(tileIndex / this.tileRowCount) * this.tileSizeY,
             width: this.tileSizeX,
             height: this.tileSizeY
         };

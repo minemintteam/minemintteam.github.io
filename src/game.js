@@ -40,6 +40,9 @@ import MaterialColors from './systems/ui/colors/material.js';
 //testing game objects
 import Player from './data/player/player.js';
 
+//testing network players friendly class
+import Friendly from './data/npc/friendly.js';
+
 //testing camera 
 import Camera from './systems/gfx/camera.js';
 
@@ -74,26 +77,36 @@ let txTitle = new Text([gfx,canvas.width / 2, canvas.height /2 - 20, mColors.gra
 
 var playerStart = false;
 
+let player_name = "SamTest";
+
 async function updateFirebase() {
-    set(ref(database, 'users/SamTest'), {
+    set(ref(database, 'users/' + player_name), {
+        name: player_name,
         x: PlayerOne.getLocation().x,
         y: PlayerOne.getLocation().y,
         health: PlayerOne.getHealth(),
         mana: PlayerOne.getMana()
       });
-      updateGameFromServer();
 }
 
 async function updateGameFromServer() {
-    const players = ref(database, 'users');
+    const players = ref(database, 'users/');
     onValue(players, (snapshot) => {
         const data = snapshot.val();
-        console.log(data);
+        var playerObjects = Object.keys(data); 
+        var i = 0;
+        for(i = 0; i < playerObjects.length; i++) {
+            if(playerObjects[i] != player_name) {
+                otherPlayers[i - 1] = new Friendly(data[playerObjects[i]].name, data[playerObjects[i]].health, data[playerObjects[i]].mana, "../src/data/images/actors.png", data[playerObjects[i]].x, data[playerObjects[i]].y, 32, 32, 4, 3, 1, 4, gfx);
+            }
+        }
+        console.log(otherPlayers);
     });
 
 }
+updateGameFromServer();
 
-setInterval(updateFirebase, 1000/64);
+//setInterval(updateFirebase, 1000/64);
 
 class Game {
 
@@ -120,6 +133,12 @@ class Game {
         Cam.update(tX, tY);
         Map.updatePlayerLocation(tX, tY);
         Map.drawBottom();
+        var i = 0;
+        
+        for(i = 0; i < otherPlayers.length; i++) {
+            otherPlayers[i].draw();
+        }
+        
         PlayerOne.draw();
         Map.drawTop();
     }

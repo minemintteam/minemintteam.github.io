@@ -182,14 +182,14 @@ class Player extends SpriteSheet {
     isColliding() {
         var i;
         for(i = 0; i < this.collision.length; i++) {
-            if(this.locX < this.collision[i].x + this.tileSizeX && this.locX + this.tileSizeX > this.collision[i].x && this.locY < this.collision[i].y + this.tileSizeY && this.locY + this.tileSizeY > this.collision[i].y) {
-                if(this.locX + this.tileSizeX  < this.collision[i].x + this.tileSizeX) {
+            if(this.locX < this.collision[i].x + this.collision[i].width && this.locX + this.tileSizeX > this.collision[i].x && this.locY < this.collision[i].y + this.collision[i].height && this.locY + this.tileSizeY > this.collision[i].y) {
+                if(this.locX + this.tileSizeX  < this.collision[i].x + this.collision[i].width) {
                     this.collision_right = true;
                 }
                 if(this.locX > this.collision[i].x) {
                     this.collision_left = true;
                 } 
-                if(this.locY + this.tileSizeY < this.collision[i].y + this.tileSizeY) {
+                if(this.locY + this.tileSizeY < this.collision[i].y + this.collision[i].height) {
                     this.collision_down = true;
                 } 
                 if(this.locY > this.collision[i].y) {
@@ -204,6 +204,7 @@ class Player extends SpriteSheet {
         this.locX = x;
         this.locY = y;
         this.collision = collision;
+        //console.log(this.collision);
     }
 }
 

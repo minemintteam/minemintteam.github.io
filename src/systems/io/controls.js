@@ -70,7 +70,6 @@ class Controls {
 
     touchStartHandler(e) {
         mouseClicked = true;
-        console.log(cw, ch);
         x = e.touches[0].clientX - ((screenWidth - cw) / 2);
         y = e.touches[0].clientY - ((screenHeight - ch) / 2);
     }

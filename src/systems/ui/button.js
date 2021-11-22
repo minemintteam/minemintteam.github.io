@@ -1,16 +1,18 @@
 class Button  {
-    constructor(config) {
-        this.canvas = config[0].getCanvas();
-        this.ctx = config[0].getContext();
-        this.input = config[1];
-        this.text = config[2];
-        this.x = config[3];
-        this.y = config[4];
-        this.background_color = config[5];
-        this.border_color = config[6];
-        this.text_color = config[7];
-        this.background_dark_color = config[8];
-        this.callback = config[9];
+    constructor(text, x, y, text_color, background_color, background_dark_color, border_color, gfx, input, callback) {
+        this.text = text;
+        this.x = x;
+        this.y = y;
+        this.text_color = text_color;
+        this.background_color = background_color;
+        this.background_dark_color = background_dark_color;
+        this.border_color = border_color;
+        
+        this.canvas = gfx.getCanvas();
+        this.ctx = gfx.getContext();
+        this.input = input;
+
+        this.callback = callback;
 
         this.count = 0;
     }
@@ -38,9 +40,6 @@ class Button  {
             this.ctx.font = "20px Roboto";
             this.ctx.fillText(this.text, this.x - (this.text_width / 2), this.y - (this.text_height / 2));
         }
-
-        //top left x = (px - ((text_width + 20) / 2))  //top left y = (py - (text_height + 35 / 2))
-        //bottom right x = (px + ((text_width + 20) / 2)) //bottom right y = (py - (text_height - 45 / 2)) 
     }    
 
     roundRectBorder(x, y, w, h, radius, color) {

@@ -72,8 +72,7 @@ let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, xX, yY, map
 
 let Cam = new Camera(PlayerOne, 32, 32, gfx);
 
-let btNewGame = new Button([gfx,input,"New Game",canvas.width / 2,canvas.height / 2 + 20,mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("new game click"); tempBool = true; }]);
-let btQuitGame = new Button([gfx,input,"Quit",xX, yY - (canvas.width / 2),mColors.blue_600(),mColors.blue_200(),mColors.gray_200(),mColors.blue_800(),() => { console.log("quit game click"); tempBool = false; }]);
+let btNewGame = new Button("New Game", canvas.width / 2, canvas.height / 2 + 20, mColors.gray_200(), mColors.blue_600(), mColors.blue_800(), mColors.blue_200(), gfx, input, () => { console.log("new game click"); tempBool = true; });
 
 let txTitle = new Text([gfx,canvas.width / 2, canvas.height /2 - 20, mColors.gray_200()]);
 
@@ -88,7 +87,6 @@ class Game {
     drawGameLayer() {
         var tX = PlayerOne.getLocation().x;
         var tY = PlayerOne.getLocation().y;
-        //btQuitGame.update(tX - 200, tY - 50);
         Cam.update(tX, tY);
         Map.updatePlayerLocation(tX, tY);
         Map.drawBottom();
@@ -96,8 +94,6 @@ class Game {
         
         PlayerOne.draw();
         Map.drawTop();
-
-        //btQuitGame.draw();
     }
 
     drawUI() {

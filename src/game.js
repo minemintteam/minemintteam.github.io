@@ -12,7 +12,7 @@ import TileMap from './data/maps/tilemap.js';
 //testing ui
 import Button from './systems/ui/button.js';
 import Text from './systems/ui/text.js';
-import Background from './systems/ui/background.js';
+import BackgroundColor from './systems/ui/backgroundcolor.js';
 import MaterialColors from './systems/ui/colors/material.js';
 
 //testing game objects
@@ -58,7 +58,7 @@ let input = new Controls(canvas.width, canvas.height);
 
 let mColors = new MaterialColors();
 
-let background = new Background([gfx,mColors.gray_800(), 1.0]);
+let background = new BackgroundColor(mColors.gray_800(), 1.0,gfx);
 
 let xX = canvas.width / 2;
 let yY = canvas.height / 2;

@@ -74,7 +74,7 @@ let Cam = new Camera(PlayerOne, 32, 32, gfx);
 
 let btNewGame = new Button("New Game", canvas.width / 2, canvas.height / 2 + 20, mColors.gray_200(), mColors.blue_600(), mColors.blue_800(), mColors.blue_200(), gfx, input, () => { console.log("new game click"); tempBool = true; });
 
-let txTitle = new Text([gfx,canvas.width / 2, canvas.height /2 - 20, mColors.gray_200()]);
+let txTitle = new Text(canvas.width / 2, canvas.height /2 - 20, mColors.gray_200(), gfx);
 
 var playerStart = false;
 

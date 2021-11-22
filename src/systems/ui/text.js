@@ -1,10 +1,11 @@
 class Text {
-    constructor(config) {
-        this.canvas = config[0].getCanvas();
-        this.ctx = config[0].getContext();
-        this.x = config[1];
-        this.y = config[2];
-        this.color = config[3];
+    constructor(x, y, color, gfx) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+
+        this.canvas = gfx.getCanvas();
+        this.ctx = gfx.getContext();
     }
 
     draw(text) {

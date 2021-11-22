@@ -1,5 +1,20 @@
 //2021-2022 samuel r rivera-bonilla
 
+
+// Create WebSocket connection.
+const socket = new WebSocket('ws://127.0.0.1:80');
+
+// Connection opened
+socket.addEventListener('open', function (event) {
+    socket.send('Hello Server!');
+});
+
+// Listen for messages
+socket.addEventListener('message', function (event) {
+    console.log('Message from server ', event.data);
+});
+
+
 //testing input
 import Controls from './systems/io/controls.js';
 

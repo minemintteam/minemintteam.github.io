@@ -30,5 +30,35 @@
 <body>
     <canvas id="game_canvas"></canvas>
     <script type="module" src="main.js"></script>
+
+    <script>
+        // Create WebSocket connection.
+        const socket = new WebSocket('ws://127.0.0.1:80');
+
+        // Connection opened
+        socket.addEventListener('open', function (event) {
+            console.log('Connected to server');
+        });
+
+        // Listen for messages
+        socket.addEventListener('message', function (event) {
+            console.log('Message from server ', event.data);
+        });
+
+        // Listen for errors
+        socket.addEventListener('error', function (event) {
+            console.log('Error: ' + event.data);
+        });
+
+        // Listen for connection closed
+        socket.addEventListener('close', function (event) {
+            console.log('Connection closed');
+        });
+
+        // Send message to server
+        function sendMessage(message) {
+            socket.send(message);
+        }
+    </script>
 </body>
 </html>

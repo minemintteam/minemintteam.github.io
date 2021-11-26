@@ -21,6 +21,9 @@ import Player from './data/player/player.js';
 //testing camera 
 import Camera from './systems/gfx/camera.js';
 
+//server test
+import Client from './systems/net/Client.js';
+
 var isMobile = {
     Android: function() {
         return navigator.userAgent.match(/Android/i);
@@ -64,7 +67,7 @@ var tempBool = false;
 
 let map = await fetch('../src/data/maps/mmotiny.json').then(response => response.json());
 
-let PlayerOne = new Player("PlayerOne", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 1, 4, gfx, input);
+let PlayerOne = new Player("SamTest", 100, 100, 10, "../src/data/images/actors.png", xX, yY, 32, 32, 4, 3, 1, 4, gfx, input);
 let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, xX, yY, map, gfx);
 
 let Cam = new Camera(PlayerOne, 32, 32, gfx);
@@ -72,6 +75,9 @@ let Cam = new Camera(PlayerOne, 32, 32, gfx);
 let btNewGame = new Button("New Game", canvas.width / 2, canvas.height / 2 + 20, mColors.gray_200(), mColors.blue_600(), mColors.blue_800(), mColors.blue_200(), gfx, input, () => { console.log("new game click"); tempBool = true; });
 
 let txTitle = new Text(canvas.width / 2, canvas.height /2 - 20, mColors.gray_200(), gfx);
+
+let client = new Client("127.0.0.1", "80");
+client.setPlayerName("SamTest");
 
 var playerStart = false;
 
@@ -84,6 +90,7 @@ class Game {
     drawGameLayer() {
         var tX = PlayerOne.getLocation().x;
         var tY = PlayerOne.getLocation().y;
+        if(PlayerOne.getMoving() == true) { client.update(tX, tY); }
         Cam.update(tX, tY);
         Map.updatePlayerLocation(tX, tY);
         Map.drawBottom();

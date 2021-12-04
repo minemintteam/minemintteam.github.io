@@ -1,5 +1,5 @@
 //2021-2022 samuel r rivera-bonilla
-import SpriteSheet from "../../systems/gfx/spritesheet.js";
+import SpriteSheet from "../gfx/spritesheet.js";
 
 class Player extends SpriteSheet {
     constructor(name, health, mana, power, image, locX, locY, tileSizeX, tileSizeY, tileRowCount, tileColumnCount, tileIndexX, tileIndexY, gfx, input) {

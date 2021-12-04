@@ -7,7 +7,7 @@ import Controls from './systems/io/controls.js';
 import Graphics from './systems/io/graphics.js';
 
 //testing map
-import TileMap from './data/maps/tilemap.js';
+import TileMap from './systems/gfx/tilemap.js';
 
 //testing ui
 import Button from './systems/ui/button.js';
@@ -16,7 +16,7 @@ import BackgroundColor from './systems/ui/backgroundcolor.js';
 import MaterialColors from './systems/ui/colors/material.js';
 
 //testing game objects
-import Player from './data/player/player.js';
+import Player from './systems/xo/player.js';
 
 //testing camera 
 import Camera from './systems/gfx/camera.js';

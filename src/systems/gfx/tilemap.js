@@ -1,4 +1,4 @@
-import TileSet from '../../systems/gfx/tileset.js';
+import TileSet from './tileset.js';
 
 class TileMap extends TileSet{
     constructor(name, image, locX, locY, playerX, playerY, map, gfx) {

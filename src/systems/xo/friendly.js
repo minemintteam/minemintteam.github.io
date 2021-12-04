@@ -1,5 +1,5 @@
 //2021-2022 samuel r rivera-bonilla
-import SpriteSheet from "../../systems/gfx/spritesheet.js";
+import SpriteSheet from "../gfx/spritesheet.js";
 
 class Friendly extends SpriteSheet {
     constructor(name, health, mana, image, locX, locY, tileSizeX, tileSizeY, tileRowCount, tileColumnCount, tileIndexX, tileIndexY, gfx) {

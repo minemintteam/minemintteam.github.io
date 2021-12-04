@@ -22,7 +22,8 @@ import Player from './data/player/player.js';
 import Camera from './systems/gfx/camera.js';
 
 //server test
-import Client from './systems/net/Client.js';
+import Client from './systems/net/client.js';
+import Friendly from './data/npc/friendly.js';
 
 var isMobile = {
     Android: function() {
@@ -72,12 +73,12 @@ let Map = new TileMap("map", "../src/data/images/tileset.png", 0, 0, xX, yY, map
 
 let Cam = new Camera(PlayerOne, 32, 32, gfx);
 
-let btNewGame = new Button("New Game", canvas.width / 2, canvas.height / 2 + 20, mColors.gray_200(), mColors.blue_600(), mColors.blue_800(), mColors.blue_200(), gfx, input, () => { console.log("new game click"); tempBool = true; });
+let btNewGame = new Button("New Game", canvas.width / 2, canvas.height / 2 + 20, mColors.gray_200(), mColors.blue_600(), mColors.blue_800(), mColors.blue_200(), gfx, input, () => { tempBool = true; });
 
 let txTitle = new Text(canvas.width / 2, canvas.height /2 - 20, mColors.gray_200(), gfx);
 
 let client = new Client("127.0.0.1", "80");
-client.setPlayerName("SamTest");
+client.setPlayerName("Test");
 
 var playerStart = false;
 
@@ -95,6 +96,20 @@ class Game {
         Map.updatePlayerLocation(tX, tY);
         Map.drawBottom();
         var i = 0;
+        var friendlies = {};
+        var j = client.getData();
+        if(j != null) {
+            j = j.split('\n')
+            for(i = 0; i < j.length - 1; i++) {
+                var temp = j[i].split(':');
+                if(temp[0] != client.getPlayerName()) {
+                    var loc = temp[1].split(',');
+                    friendlies[i] = new Friendly(temp[0], 100, 100, "../src/data/images/actors.png", loc[0], loc[1], 32, 32, 4, 3, 1, 4, gfx);
+                    friendlies[i].draw();
+                }
+            }
+        }
+        Map.drawTop();
         
         PlayerOne.draw();
         Map.drawTop();

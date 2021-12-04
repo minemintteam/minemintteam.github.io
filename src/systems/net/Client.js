@@ -7,7 +7,7 @@ class Client {
         }
 
         this.socket.onmessage = (event) => {
-            console.log(event.data);
+            this.data = event.data;
         }
 
         this.socket.onclose = () => {
@@ -43,6 +43,14 @@ class Client {
 
     setPlayerName(name) {
         this.playerName = name;
+    }
+
+    getPlayerName() {
+        return this.playerName;
+    }
+
+    getData() {
+        return this.data;
     }
 
     ping() {

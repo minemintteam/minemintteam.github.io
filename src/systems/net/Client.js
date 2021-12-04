@@ -35,7 +35,7 @@ class Client {
         this.game();
     }
 
-    game() {
+    network() {
         if(this.socket.readyState === WebSocket.OPEN) {
             this.socket.send('MOVE ' + this.playerName + ',' + this.x + ',' + this.y + '');
         }

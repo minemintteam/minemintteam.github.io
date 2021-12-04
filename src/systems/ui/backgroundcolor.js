@@ -7,6 +7,14 @@ class BackgroundColor {
             this.ctx = gfx.getContext();
     }
 
+    setOpacity(opacity) {
+        this.opacity = opacity;
+    }
+
+    setColor(color) {
+        this.color = color;
+    }
+
     drawColor()  {
         this.ctx.fillStyle = this.color;
         this.ctx.globalAlpha = this.opacitiy;
